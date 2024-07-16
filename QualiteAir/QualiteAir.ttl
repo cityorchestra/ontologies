@@ -1,0 +1,386 @@
+@prefix : <https://metropole.rennes.fr/ontology/StationAir#> .
+@prefix ex: <http://example.com/> .
+@prefix fun: <http://w3id.org/sparql-generate/fn/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix iter: <http://w3id.org/sparql-generate/iter/> .
+@prefix oqai: <https://www.oqai.fr/> .
+@prefix qsub: <https://www.oqai.fr/Substance/> .
+@prefix qudt: <http://qudt.org/vocab/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix saref: <https://saref.etsi.org/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rm-onto: <https://metropole.rennes.fr/ontology#> .
+@prefix rm-station: <https://metropole.rennes.fr/assets#> .
+@base <https://metropole.rennes.fr/ontology/StationAir> .
+
+<https://metropole.rennes.fr/ontology/StationAir> rdf:type owl:Ontology ;
+                                                   dcterms:title "Ontologie des stations de mesure de la qualité de l'air"@fr .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/applicableSystem
+<http://qudt.org/schema/qudt/applicableSystem> rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/conversionMultiplier
+<http://qudt.org/schema/qudt/conversionMultiplier> rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/conversionMultiplierSN
+<http://qudt.org/schema/qudt/conversionMultiplierSN> rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/hasDimensionVector
+<http://qudt.org/schema/qudt/hasDimensionVector> rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/hasQuantityKind
+<http://qudt.org/schema/qudt/hasQuantityKind> rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/iec61360Code
+<http://qudt.org/schema/qudt/iec61360Code> rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/informativeReference
+<http://qudt.org/schema/qudt/informativeReference> rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/omUnit
+<http://qudt.org/schema/qudt/omUnit> rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/symbol
+<http://qudt.org/schema/qudt/symbol> rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/ucumCode
+<http://qudt.org/schema/qudt/ucumCode> rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/uneceCommonCode
+<http://qudt.org/schema/qudt/uneceCommonCode> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#asWKT
+geo:asWKT rdf:type owl:AnnotationProperty ;
+          rdfs:label "Géométrie" .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdfs:label "Nom" .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#notation
+skos:notation rdf:type owl:AnnotationProperty ;
+              rdfs:label "Code" .
+
+
+###  https://www.oqai.fr/mesureSubstance
+oqai:mesureSubstance rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://qudt.org/schema/qudt/LatexString
+<http://qudt.org/schema/qudt/LatexString> rdf:type rdfs:Datatype .
+
+
+###  http://qudt.org/schema/qudt/UCUMcs
+<http://qudt.org/schema/qudt/UCUMcs> rdf:type rdfs:Datatype .
+
+
+###  http://www.opengis.net/ont/geosparql#wktLiteral
+geo:wktLiteral rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://qudt.org/vocab/hasUnit
+qudt:hasUnit rdf:type owl:ObjectProperty .
+
+
+###  https://saref.etsi.org/core/PropertyOfInterest
+saref:PropertyOfInterest rdf:type owl:ObjectProperty ;
+                         rdfs:domain saref:Device ;
+                         rdfs:range oqai:Substance ;
+                         rdfs:label "Mesure la propriété" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://metropole.rennes.fr/assets#concentrationNO2
+rm-station:concentrationNO2 rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf oqai:ProprieteMesuree .
+
+
+###  https://metropole.rennes.fr/assets#concentrationO3
+rm-station:concentrationO3 rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf oqai:ProprieteMesuree .
+
+
+###  https://metropole.rennes.fr/assets#concentrationPM10
+rm-station:concentrationPM10 rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf oqai:ProprieteMesuree .
+
+
+###  https://metropole.rennes.fr/assets#concentrationPM25
+rm-station:concentrationPM25 rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf oqai:ProprieteMesuree .
+
+
+###  https://www.oqai.fr/ProprieteMesuree
+oqai:ProprieteMesuree rdf:type owl:DatatypeProperty ;
+                      rdfs:label "Propriété mesurée" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://qudt.org/schema/qudt/Unit
+<http://qudt.org/schema/qudt/Unit> rdf:type owl:Class ;
+                                   rdfs:label "Unité" .
+
+
+###  https://saref.etsi.org/core/Device
+saref:Device rdf:type owl:Class ;
+             rdfs:label "Station" .
+
+
+###  https://www.oqai.fr/EntitePhysique
+oqai:EntitePhysique rdf:type owl:Class .
+
+
+###  https://www.oqai.fr/Substance
+oqai:Substance rdf:type owl:Class ;
+               rdfs:subClassOf oqai:EntitePhysique ;
+               rdfs:label "Analysed substance"@en ,
+                          "Substance analysée"@fr ;
+               skos:definition "Any chemical compound, particle, or biological agent present in the air we breathe inside buildings. These substances can have adverse effects on the health, comfort, and well-being of occupants."@en ,
+                               "tout composé chimique, particule ou agent biologique présent dans l'air que nous respirons à l'intérieur des bâtiments. Ces substances peuvent avoir des effets néfastes sur la santé, le confort et le bien-être des occupants."@fr .
+
+
+###  https://www.oqai.fr/Substance/NO2
+qsub:NO2 rdf:type owl:Class ;
+         rdfs:subClassOf oqai:Substance ;
+         rdfs:label "Dioxyde d'azote"@fr .
+
+
+###  https://www.oqai.fr/Substance/O3
+qsub:O3 rdf:type owl:Class ;
+        rdfs:subClassOf oqai:Substance ;
+        rdfs:label "Ozone"@fr .
+
+
+###  https://www.oqai.fr/Substance/ParticuleFine10
+qsub:ParticuleFine10 rdf:type owl:Class ;
+                     rdfs:subClassOf oqai:Substance ;
+                     rdfs:label "Particules fines (PM10)"@fr .
+
+
+###  https://www.oqai.fr/Substance/ParticuleFine25
+qsub:ParticuleFine25 rdf:type owl:Class ;
+                     rdfs:subClassOf oqai:Substance ;
+                     rdfs:label "Particules fines (PM2,5)"@fr .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://qudt.org/vocab/PPM
+qudt:PPM rdf:type owl:NamedIndividual ,
+                  <http://qudt.org/schema/qudt/Unit> ;
+         dcterms:description "Dimensionless unit for concentration. Recommended practice is to use specific units such as $ug/l$."^^<http://qudt.org/schema/qudt/LatexString> ;
+         <http://qudt.org/schema/qudt/applicableSystem> <http://qudt.org/vocab/sou/ASU> ,
+                                                        <http://qudt.org/vocab/sou/CGS> ,
+                                                        <http://qudt.org/vocab/sou/CGS-EMU> ,
+                                                        <http://qudt.org/vocab/sou/CGS-ESU> ,
+                                                        <http://qudt.org/vocab/sou/CGS-GAUSS> ,
+                                                        <http://qudt.org/vocab/sou/IMPERIAL> ,
+                                                        <http://qudt.org/vocab/sou/PLANCK> ,
+                                                        <http://qudt.org/vocab/sou/SI> ;
+         <http://qudt.org/schema/qudt/conversionMultiplier> 0.000001 ;
+         <http://qudt.org/schema/qudt/conversionMultiplierSN> "1.0E-6"^^xsd:double ;
+         <http://qudt.org/schema/qudt/hasDimensionVector> <http://qudt.org/vocab/dimensionvector/A0E0L0I0M0H0T0D1> ;
+         <http://qudt.org/schema/qudt/hasQuantityKind> <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+         <http://qudt.org/schema/qudt/iec61360Code> "0112/2///62720#UAD925" ;
+         <http://qudt.org/schema/qudt/informativeReference> "http://aurora.regenstrief.org/~ucum/ucum.html#section-Derived-Unit-Atoms"^^xsd:anyURI ;
+         <http://qudt.org/schema/qudt/omUnit> <http://www.ontology-of-units-of-measure.org/resource/om-2/partsPerMillion> ;
+         <http://qudt.org/schema/qudt/symbol> "PPM" ;
+         <http://qudt.org/schema/qudt/ucumCode> "[ppm]"^^<http://qudt.org/schema/qudt/UCUMcs> ;
+         <http://qudt.org/schema/qudt/uneceCommonCode> "59" ;
+         rdfs:isDefinedBy <http://qudt.org/2.1/vocab/unit> ;
+         rdfs:label "Parties par million"@fr ,
+                    "Parts per million"@en .
+
+
+###  https://metropole.rennes.fr/assets#FR19012
+rm-station:FR19012 rdf:type owl:NamedIndividual ,
+                            saref:Device ;
+                   geo:asWKT "POINT(-4.486600887284878 48.38622106618975)"^^geo:wktLiteral ;
+                   rdfs:label "Brest Mace" ;
+                   skos:notation "FR19012" .
+
+
+###  https://metropole.rennes.fr/assets#FR19016
+rm-station:FR19016 rdf:type owl:NamedIndividual ,
+                            saref:Device ;
+                   geo:asWKT "POINT(-4.570134547131946 48.35796323165957)"^^geo:wktLiteral ;
+                   rdfs:label "Brest IMT" ;
+                   skos:notation "FR19016" .
+
+
+###  https://metropole.rennes.fr/assets#FR19020
+rm-station:FR19020 rdf:type owl:NamedIndividual ,
+                            saref:Device ;
+                   geo:asWKT "POINT(-2.9347096099950547 48.25993001085299)"^^geo:wktLiteral ;
+                   rdfs:label "Merleac Kergoff" ;
+                   skos:notation "FR19020" .
+
+
+###  https://metropole.rennes.fr/assets#FR19032
+rm-station:FR19032 rdf:type owl:NamedIndividual ,
+                            saref:Device ;
+                   geo:asWKT "POINT(-3.394977674351435 47.742488039251874)"^^geo:wktLiteral ;
+                   rdfs:label "Lorient B. Bissonnet" ;
+                   skos:notation "FR19032" .
+
+
+###  https://metropole.rennes.fr/assets#FR19033
+rm-station:FR19033 rdf:type owl:NamedIndividual ,
+                            saref:Device ;
+                   geo:asWKT "POINT(-2.7639942886567894 47.64892153523567)"^^geo:wktLiteral ;
+                   rdfs:label "Vannes UTA" ;
+                   skos:notation "FR19033" .
+
+
+###  https://metropole.rennes.fr/assets#FR19053
+rm-station:FR19053 rdf:type owl:NamedIndividual ,
+                            saref:Device ;
+                   saref:PropertyOfInterest rm-station:concentrationO3 ;
+                   geo:asWKT "POINT(-1.834569 48.08029)"^^geo:wktLiteral ,
+                             "POINT(-4.097653443095912 47.98662014812172)"^^geo:wktLiteral ;
+                   rdfs:label "MORDELLES (Station périurbaine fond)" ,
+                              "Quimper Zola" ;
+                   skos:notation "FR19053" .
+
+
+###  https://metropole.rennes.fr/assets#FR19061
+rm-station:FR19061 rdf:type owl:NamedIndividual ,
+                            saref:Device ;
+                   geo:asWKT "POINT(-2.749528320356466 48.51353186100033)"^^geo:wktLiteral ;
+                   rdfs:label "Saint Brieuc Balzac" ;
+                   skos:notation "FR19061" .
+
+
+###  https://metropole.rennes.fr/assets#FR19082
+rm-station:FR19082 rdf:type owl:NamedIndividual ,
+                            saref:Device ;
+                   geo:asWKT "POINT(-2.0026882599672007 48.65297088022217)"^^geo:wktLiteral ;
+                   rdfs:label "Saint Malo Rocabey" ;
+                   skos:notation "FR19082" .
+
+
+###  https://metropole.rennes.fr/assets#air_HALLES_04
+rm-station:air_HALLES_04 rdf:type owl:NamedIndividual ,
+                                  saref:Device ;
+                         saref:PropertyOfInterest rm-station:concentrationNO2 ;
+                         geo:asWKT "POINT(-1.665886 48.10859)"^^geo:wktLiteral ;
+                         rdfs:label "HALLES (Station urbaine traffic)" ;
+                         skos:notation "air_HALLES_04" .
+
+
+###  https://metropole.rennes.fr/assets#air_LAENNEC_03
+rm-station:air_LAENNEC_03 rdf:type owl:NamedIndividual ,
+                                   saref:Device ;
+                          saref:PropertyOfInterest rm-station:concentrationNO2 ,
+                                                   rm-station:concentrationPM10 ,
+                                                   rm-station:concentrationPM25 ;
+                          geo:asWKT "POINT(-1.665886 48.10859)"^^geo:wktLiteral ;
+                          rdfs:label "LAENNEC (Station urbaine traffic)" ;
+                          skos:notation "air_LAENNEC_03" .
+
+
+###  https://metropole.rennes.fr/assets#air_THABOR_01
+rm-station:air_THABOR_01 rdf:type owl:NamedIndividual ,
+                                  saref:Device ;
+                         saref:PropertyOfInterest rm-station:concentrationNO2 ,
+                                                  rm-station:concentrationO3 ,
+                                                  rm-station:concentrationPM10 ,
+                                                  rm-station:concentrationPM25 ;
+                         geo:asWKT "POINT(-1.673088 48.11521)"^^geo:wktLiteral ;
+                         rdfs:label "THABOR (Station urbaine fond)" ;
+                         skos:notation "air_THABOR_01" .
+
+
+###  https://metropole.rennes.fr/assets#concentrationNO2
+rm-station:concentrationNO2 rdf:type owl:NamedIndividual ;
+                            qudt:hasUnit qudt:PPM .
+
+
+###  https://metropole.rennes.fr/assets#concentrationO3
+rm-station:concentrationO3 rdf:type owl:NamedIndividual ;
+                           qudt:hasUnit qudt:PPM .
+
+
+###  https://metropole.rennes.fr/assets#concentrationPM10
+rm-station:concentrationPM10 rdf:type owl:NamedIndividual ;
+                             qudt:hasUnit qudt:PPM .
+
+
+###  https://metropole.rennes.fr/assets#concentrationPM25
+rm-station:concentrationPM25 rdf:type owl:NamedIndividual ;
+                             qudt:hasUnit qudt:PPM .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+<http://qudt.org/schema/qudt/DerivedUnit> rdfs:label "Unité dérivée" .
+
+
+rm-station:concentrationNO2 rdfs:label "Concentration d'azote en PPM" ;
+                            oqai:mesureSubstance qsub:NO2 .
+
+
+rm-station:concentrationO3 rdfs:label "Concentration d'ozone en PPM" ;
+                           oqai:mesureSubstance qsub:O3 .
+
+
+rm-station:concentrationPM10 oqai:mesureSubstance qsub:ParticuleFine10 ;
+                             rdfs:label "Concentration en particules fine PM10 en PPM" .
+
+
+rm-station:concentrationPM25 rdfs:label "Concentration en particules fine PM25 en PPM" ;
+                             oqai:mesureSubstance qsub:ParticuleFine25 .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

@@ -1,0 +1,1248 @@
+@prefix : <https://www.cstb.fr> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix wkt: <http://www.opengis.net/ont/geosparql#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cstb: <https://www.cstb.fr#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rm-d: <https://metropole.rennes.fr/datasets#> .
+@prefix rm-z: <https://metropole.rennes.fr/data/zone#> .
+@prefix insee-epci: <http://id.insee.fr/geo/epci/> .
+@base <https://www.cstb.fr> .
+
+<https://www.cstb.fr> rdf:type owl:Ontology ;
+                       rdfs:comment """L'ontologie ZAN (Zéro Artificialisation Nette) s'inscrit dans le besoin d'outiller les décision d'urbanisme et la stratégie Zéro Artificialisation de la Métrpôle de Rennes. 
+
+L'ontologie ZAN définie les concepts liés au cas d'usage ZAN. Qu'il s'agisse des parcelles, indicateurs, nomenclatures, tous les concepts prennent la forme de classes définies par des propriétés et liées entre elle par des relations. Cette approche permet de structurer les données nécessaires pour la calcul des scores ZAN a différentes échelles et l'aide à la décision pour les évolution des règles d'urbanisme.""" ;
+                       rdfs:label "Ontologie ZAN" ;
+                       owl:versionInfo "5.1-light"@fr .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/date
+<http://purl.org/dc/elements/1.1/date> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/date
+<http://purl.org/dc/terms/date> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+<http://purl.org/dc/terms/identifier> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/language
+<http://purl.org/dc/terms/language> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+<http://purl.org/dc/terms/publisher> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/relation
+<http://purl.org/dc/terms/relation> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/rights
+<http://purl.org/dc/terms/rights> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/source
+<http://purl.org/dc/terms/source> rdf:type owl:AnnotationProperty ;
+                                  <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                                  <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:55:46Z"^^xsd:dateTime .
+
+
+###  http://purl.org/dc/terms/subject
+<http://purl.org/dc/terms/subject> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/vocab/unit/hasUnit
+<http://qudt.org/vocab/unit/hasUnit> rdf:type owl:AnnotationProperty ;
+                                     <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                                     <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:26:01Z"^^xsd:dateTime ;
+                                     rdfs:label "a pour unité" .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#comment
+rdfs:comment rdfs:label "Définition" .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdfs:label "Libellé" .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/dcat#distribution
+<http://www.w3.org/ns/dcat#distribution> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/dcat#keyword
+<http://www.w3.org/ns/dcat#keyword> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/dcat#landingPage
+<http://www.w3.org/ns/dcat#landingPage> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/dcat#theme
+<http://www.w3.org/ns/dcat#theme> rdf:type owl:AnnotationProperty .
+
+
+###  https://www.cstb.fr#deriveDe
+cstb:deriveDe rdf:type owl:AnnotationProperty ;
+              rdfs:range <http://www.w3.org/ns/dcat#Dataset> .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.opengis.net/ont/geosparql#wktLiteral
+wkt:wktLiteral rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdfs:subPropertyOf cstb:relationTopologique .
+
+
+###  https://www.cstb.fr#aIndicateurSurface
+cstb:aIndicateurSurface rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf cstb:estEvalue ;
+                        owl:inverseOf cstb:evalue ;
+                        rdfs:domain cstb:EntiteGeographique ;
+                        rdfs:range cstb:IndicateurSurface ;
+                        rdfs:comment "Une zone géographique à un indicateur" ;
+                        rdfs:label "a indicateur"@fr .
+
+
+###  https://www.cstb.fr#aNomenclature
+cstb:aNomenclature rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf cstb:estEvalue ;
+                   rdfs:domain cstb:IndicateurSurface ;
+                   rdfs:range cstb:Nomenclature ;
+                   rdfs:comment "Lie un indicateur à une entrée de nomenclature" ;
+                   rdfs:label "a nomenclature"@fr .
+
+
+###  https://www.cstb.fr#aPourZoneCible
+cstb:aPourZoneCible rdf:type owl:ObjectProperty ;
+                    rdfs:domain cstb:Scenario ;
+                    rdfs:range cstb:EntiteGeographique ;
+                    <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                    <http://purl.org/dc/elements/1.1/date> "2023-11-28T08:37:13Z"^^xsd:dateTime ;
+                    rdfs:comment "a pour zone cible" ;
+                    rdfs:label "a pour zone cible" .
+
+
+###  https://www.cstb.fr#aScore
+cstb:aScore rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf cstb:estEvalue ;
+            owl:inverseOf cstb:scoreEvalue ;
+            rdf:type owl:TransitiveProperty ;
+            rdfs:domain cstb:EntiteGeographique ;
+            rdfs:range cstb:Score ;
+            rdfs:comment "Lie un zone géographique à un score" ;
+            rdfs:label "a pour score"@fr .
+
+
+###  https://www.cstb.fr#calculeSelon
+cstb:calculeSelon rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf cstb:evalue ;
+                  rdfs:domain cstb:Score ;
+                  rdfs:range cstb:IndicateurSurface ;
+                  rdfs:comment "Assure la traçabilité du score calculé sur la base d'indicateurs" ;
+                  rdfs:label "Calculé selon" .
+
+
+###  https://www.cstb.fr#deriveDe
+cstb:deriveDe rdf:type owl:ObjectProperty ;
+              rdfs:domain cstb:IndicateurSurface .
+
+
+###  https://www.cstb.fr#estAdjacentA
+cstb:estAdjacentA rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf cstb:relationTopologique ;
+                  rdf:type owl:SymmetricProperty ;
+                  rdfs:domain cstb:EntiteGeographique ;
+                  rdfs:range cstb:EntiteGeographique ;
+                  rdfs:comment "Relation de proximité entre deux zone géographiques" ;
+                  rdfs:label "est adjacent à"@fr .
+
+
+###  https://www.cstb.fr#estEvalue
+cstb:estEvalue rdf:type owl:ObjectProperty ;
+               rdfs:label "est évalué" .
+
+
+###  https://www.cstb.fr#estLocaliseDans
+cstb:estLocaliseDans rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf cstb:relationTopologique ;
+                     rdfs:domain cstb:EntiteGeographique ;
+                     rdfs:range cstb:EntiteGeographique ;
+                     rdfs:comment "Relation de contenance géographique" ;
+                     rdfs:label "est localisé dans"@fr .
+
+
+###  https://www.cstb.fr#evalue
+cstb:evalue rdf:type owl:ObjectProperty ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( cstb:IndicateurSurface
+                                        cstb:Score
+                                      )
+                        ] ;
+            rdfs:range cstb:EntiteGeographique ;
+            rdfs:label "évalue" .
+
+
+###  https://www.cstb.fr#indicateurEvalue
+cstb:indicateurEvalue rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf cstb:evalue ;
+                      rdfs:domain cstb:IndicateurSurface ;
+                      rdfs:range cstb:EntiteGeographique ;
+                      rdfs:comment "Indicateur de" ,
+                                   "Lie un indicateur à une zone géographique" .
+
+
+###  https://www.cstb.fr#localiseDansCommune
+cstb:localiseDansCommune rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf cstb:estLocaliseDans ;
+                         rdfs:domain cstb:EntiteGeographique ;
+                         rdfs:range cstb:Commune .
+
+
+###  https://www.cstb.fr#localiseDansDepartement
+cstb:localiseDansDepartement rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf cstb:estLocaliseDans ;
+                             rdfs:domain cstb:EntiteGeographique ;
+                             rdfs:range cstb:EntiteGeographique .
+
+
+###  https://www.cstb.fr#localiseDansEPCI
+cstb:localiseDansEPCI rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf cstb:estLocaliseDans ;
+                      rdfs:domain cstb:Pole ;
+                      rdfs:range cstb:EPCI .
+
+
+###  https://www.cstb.fr#localiseDansOperationAmenagement
+cstb:localiseDansOperationAmenagement rdf:type owl:ObjectProperty ;
+                                      rdfs:subPropertyOf cstb:estLocaliseDans ;
+                                      rdfs:domain [ rdf:type owl:Class ;
+                                                    owl:unionOf ( cstb:Batiment
+                                                                  cstb:Parcelle
+                                                                )
+                                                  ] ;
+                                      rdfs:range cstb:OperationAmenagement .
+
+
+###  https://www.cstb.fr#localiseDansParcelle
+cstb:localiseDansParcelle rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf cstb:estLocaliseDans ;
+                          rdfs:domain [ rdf:type owl:Class ;
+                                        owl:unionOf ( cstb:Batiment
+                                                      cstb:OperationAmenagement
+                                                    )
+                                      ] ;
+                          rdfs:range cstb:Parcelle .
+
+
+###  https://www.cstb.fr#localiseDansPole
+cstb:localiseDansPole rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf cstb:estLocaliseDans ;
+                      rdfs:domain cstb:Commune ;
+                      rdfs:range cstb:Pole .
+
+
+###  https://www.cstb.fr#localiseDansSCOT
+cstb:localiseDansSCOT rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf cstb:estLocaliseDans ;
+                      rdfs:domain cstb:EntiteGeographique ;
+                      rdfs:range cstb:EntiteGeographique .
+
+
+###  https://www.cstb.fr#localiseDansZone2AU_M2
+cstb:localiseDansZone2AU_M2 rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf cstb:localiseDansZoneUrbaine ;
+                            <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                            <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:16:59Z"^^xsd:dateTime ;
+                            rdfs:label "Localisé dans la zone 2Au M2" .
+
+
+###  https://www.cstb.fr#localiseDansZonePLUI
+cstb:localiseDansZonePLUI rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf cstb:localiseDansZoneUrbaine ;
+                          rdfs:domain cstb:Parcelle ;
+                          rdfs:range cstb:ZonePLUI ;
+                          rdfs:label "Localisé dans la zone du PLUi" .
+
+
+###  https://www.cstb.fr#localiseDansZoneUrbaine
+cstb:localiseDansZoneUrbaine rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf cstb:estLocaliseDans ;
+                             rdfs:domain cstb:OperationAmenagement ;
+                             rdfs:range cstb:ZonePLUI ;
+                             rdfs:label "Localisé dans une zone urbaine" .
+
+
+###  https://www.cstb.fr#relationTopologique
+cstb:relationTopologique rdf:type owl:ObjectProperty .
+
+
+###  https://www.cstb.fr#scoreEvalue
+cstb:scoreEvalue rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf cstb:evalue ;
+                 rdfs:domain cstb:Score ;
+                 rdfs:range cstb:EntiteGeographique ;
+                 rdfs:comment "Lie un score à une zone géographique" ,
+                              "Score de" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.opengis.net/ont/geosparql#asWKT
+wkt:asWKT rdf:type owl:DatatypeProperty ;
+          rdfs:domain cstb:EntiteGeographique ;
+          rdfs:range wkt:wktLiteral ;
+          rdfs:comment "indique la géométrie de l'objet au format WKT" ;
+          rdfs:label "a géométrie" .
+
+
+###  http://www.w3.org/2004/02/skos/core#notation
+<http://www.w3.org/2004/02/skos/core#notation> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain cstb:Nomenclature ;
+                                               rdfs:range xsd:string ;
+                                               rdfs:comment "Code permettant d'identifier une entrée de nomenclature" ;
+                                               rdfs:label "Code de nomenclature" .
+
+
+###  http://www.w3.org/ns/dcat#startDate
+<http://www.w3.org/ns/dcat#startDate> rdf:type owl:DatatypeProperty ;
+                                      rdfs:domain <http://www.w3.org/ns/dcat#Dataset> ;
+                                      rdfs:range xsd:dateTime ;
+                                      rdfs:label "Date de début" .
+
+
+###  https://www.cstb.fr#date
+cstb:date rdf:type owl:DatatypeProperty ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( cstb:IndicateurSurface
+                                      cstb:Score
+                                    )
+                      ] ;
+          rdfs:range xsd:dateTime ;
+          rdfs:comment "Date pour laquelle est calculé le score ou l'indicateur" ;
+          rdfs:label "date"@fr .
+
+
+###  https://www.cstb.fr#note
+cstb:note rdf:type owl:DatatypeProperty ;
+          rdfs:domain cstb:Nomenclature ;
+          rdfs:range xsd:double ;
+          rdfs:comment "Attribut une note à chaque entrée de nomenclature" ;
+          rdfs:label "Note" ;
+          <http://www.w3.org/2004/02/skos/core#altLabel> "Notation" .
+
+
+###  https://www.cstb.fr#ratioSurface
+cstb:ratioSurface rdf:type owl:DatatypeProperty ;
+                  rdfs:domain cstb:IndicateurSurface ;
+                  rdfs:range xsd:double ;
+                  rdfs:comment "Portion de surface considérer par rapport à la toalité de la zone géographique" ;
+                  rdfs:label "ratio surface"@fr .
+
+
+###  https://www.cstb.fr#superficie
+cstb:superficie rdf:type owl:DatatypeProperty ;
+                rdfs:domain cstb:EntiteGeographique ;
+                rdfs:range xsd:double ;
+                rdfs:comment "Superficie de la zone géographique" ;
+                rdfs:label "Surperficie" .
+
+
+###  https://www.cstb.fr#superficieCible
+cstb:superficieCible rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf cstb:superficie ;
+                     rdfs:domain cstb:Scenario ;
+                     rdfs:range xsd:double ;
+                     <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                     <http://purl.org/dc/elements/1.1/date> "2023-11-28T08:42:52Z"^^xsd:dateTime ;
+                     <http://qudt.org/vocab/unit/hasUnit> <http://qudt.org/vocab/unit/HA> ;
+                     rdfs:comment "Superficie cible en hectares" ;
+                     rdfs:label "Superficie cible" .
+
+
+###  https://www.cstb.fr#valeur
+cstb:valeur rdf:type owl:DatatypeProperty ;
+            rdfs:domain cstb:Score ;
+            rdfs:range xsd:double ;
+            rdfs:comment "Valeur du score ou de l'indicateur (sur 20)" ;
+            rdfs:label "Valeur"@fr .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+<http://www.w3.org/2004/02/skos/core#Concept> rdf:type owl:Class ;
+                                              rdfs:label "Dictionnaire" .
+
+
+###  http://www.w3.org/ns/dcat#Dataset
+<http://www.w3.org/ns/dcat#Dataset> rdf:type owl:Class ;
+                                    rdfs:comment "Ensemble de données brutes" ;
+                                    rdfs:label "Jeu de données" .
+
+
+###  https://www.cstb.fr#Batiment
+cstb:Batiment rdf:type owl:Class ;
+              rdfs:subClassOf cstb:EntiteGeographique ;
+              rdfs:label "Building"@en ,
+                         "Bâtiment"@fr .
+
+
+###  https://www.cstb.fr#Carroyage
+cstb:Carroyage rdf:type owl:Class ;
+               rdfs:subClassOf cstb:EntiteGeographique ;
+               rdfs:comment "Représente un élément du quadrillage du territoire" ;
+               rdfs:label "Carroyage"@fr .
+
+
+###  https://www.cstb.fr#Commune
+cstb:Commune rdf:type owl:Class ;
+             rdfs:subClassOf cstb:EntiteGeographique ;
+             rdfs:comment "Commune administrative au sens de l'INSEE" ;
+             rdfs:label "Commune"@fr .
+
+
+###  https://www.cstb.fr#EPCI
+cstb:EPCI rdf:type owl:Class ;
+          rdfs:subClassOf cstb:EntiteGeographique ;
+          rdfs:comment "Etablissement Public de Coopération Intercommunale (Rennes Metropole)" ;
+          rdfs:label "EPCI"@fr .
+
+
+###  https://www.cstb.fr#EntiteGeographique
+cstb:EntiteGeographique rdf:type owl:Class ;
+                        rdfs:comment "Elément phyisique ou administratif disposant d'une empreinte au sol" ;
+                        rdfs:label "Entité Géographique"@fr .
+
+
+###  https://www.cstb.fr#IndicateurAgriculture
+cstb:IndicateurAgriculture rdf:type owl:Class ;
+                           rdfs:subClassOf cstb:IndicateurSurface ;
+                           rdfs:label "Indicateur Agriculture"@fr .
+
+
+###  https://www.cstb.fr#IndicateurAgricultureBio
+cstb:IndicateurAgricultureBio rdf:type owl:Class ;
+                              rdfs:subClassOf cstb:IndicateurSurface ;
+                              rdfs:label "Indicateur Agriculture Bio"@fr .
+
+
+###  https://www.cstb.fr#IndicateurBRGM_multi
+cstb:IndicateurBRGM_multi rdf:type owl:Class ;
+                          rdfs:subClassOf cstb:IndicateurSurface ;
+                          rdfs:label "Indicateur BRGM multi"@fr .
+
+
+###  https://www.cstb.fr#IndicateurBRGM_typo
+cstb:IndicateurBRGM_typo rdf:type owl:Class ;
+                         rdfs:subClassOf cstb:IndicateurSurface ;
+                         rdfs:label "Indicateur BRGM typo"@fr .
+
+
+###  https://www.cstb.fr#IndicateurGENHAB
+cstb:IndicateurGENHAB rdf:type owl:Class ;
+                      rdfs:subClassOf cstb:IndicateurSurface ;
+                      rdfs:label "Indicateur GEN HAB"@fr .
+
+
+###  https://www.cstb.fr#IndicateurGENLOC
+cstb:IndicateurGENLOC rdf:type owl:Class ;
+                      rdfs:subClassOf cstb:IndicateurSurface ;
+                      rdfs:label "Indicateur GEN LOC"@fr .
+
+
+###  https://www.cstb.fr#IndicateurInfiltrationBRGM
+cstb:IndicateurInfiltrationBRGM rdf:type owl:Class ;
+                                rdfs:subClassOf cstb:IndicateurSurface ;
+                                rdfs:label "Indicateur Infiltration BRGM"@fr .
+
+
+###  https://www.cstb.fr#IndicateurMNIE
+cstb:IndicateurMNIE rdf:type owl:Class ;
+                    rdfs:subClassOf cstb:IndicateurSurface ;
+                    rdfs:label "Indicateur MNIE"@fr ;
+                    cstb:deriveDe rm-d:mnie-2015 .
+
+
+###  https://www.cstb.fr#IndicateurMOS
+cstb:IndicateurMOS rdf:type owl:Class ;
+                   rdfs:subClassOf cstb:IndicateurSurface ;
+                   rdfs:label "Indicateur MOS"@fr .
+
+
+###  https://www.cstb.fr#IndicateurOCSGE
+cstb:IndicateurOCSGE rdf:type owl:Class ;
+                     rdfs:subClassOf cstb:IndicateurSurface ;
+                     rdfs:label "Indicateur OCSGE"@fr ;
+                     cstb:deriveDe rm-d:ocsge-2017 .
+
+
+###  https://www.cstb.fr#IndicateurPartArtificialisation
+cstb:IndicateurPartArtificialisation rdf:type owl:Class ;
+                                     rdfs:subClassOf cstb:IndicateurSurface ;
+                                     rdfs:label "Indicateur Part Artificialisation"@fr .
+
+
+###  https://www.cstb.fr#IndicateurSurface
+cstb:IndicateurSurface rdf:type owl:Class ;
+                       rdfs:comment """Caractérisation d'une portion de surface (entrée de nomenclature) à une date donnée.
+Exemple : Zone agricole sur 20% de la Parcelle #1 au 01-01-2021""" ;
+                       rdfs:label "Indicateur"@fr .
+
+
+###  https://www.cstb.fr#IndicateurVegetation
+cstb:IndicateurVegetation rdf:type owl:Class ;
+                          rdfs:subClassOf cstb:IndicateurSurface ;
+                          rdfs:label "Indicateur Végétation"@fr .
+
+
+###  https://www.cstb.fr#IndicateurZoneshumides
+cstb:IndicateurZoneshumides rdf:type owl:Class ;
+                            rdfs:subClassOf cstb:IndicateurSurface ;
+                            rdfs:label "Indicateur Zones humides"@fr .
+
+
+###  https://www.cstb.fr#Nomenclature
+cstb:Nomenclature rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> ;
+                  rdfs:comment "Ensemble des type de zones par couche et leur notation ZAN associée" ;
+                  rdfs:label "Nomenclature"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureAgriculture
+cstb:NomenclatureAgriculture rdf:type owl:Class ;
+                             rdfs:subClassOf cstb:Nomenclature ;
+                             rdfs:label "Nomenclature Agriculture"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureAgricultureBio
+cstb:NomenclatureAgricultureBio rdf:type owl:Class ;
+                                rdfs:subClassOf cstb:Nomenclature ;
+                                rdfs:label "Nomenclature Agriculture Bio"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureBRGM_multi_rural
+cstb:NomenclatureBRGM_multi_rural rdf:type owl:Class ;
+                                  rdfs:subClassOf cstb:Nomenclature ;
+                                  rdfs:comment "Qualification du sous-sol avec l'approche multi critère en zone rurale" ;
+                                  rdfs:label "Nomenclature BRGM multi rural"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureBRGM_multi_urbain
+cstb:NomenclatureBRGM_multi_urbain rdf:type owl:Class ;
+                                   rdfs:subClassOf cstb:Nomenclature ;
+                                   rdfs:comment "Qualification du sous-sol avec l'approche multi critère en zone urbaine" ;
+                                   rdfs:label "Nomenclature BRGM multi urbain"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureBRGM_typo_rural
+cstb:NomenclatureBRGM_typo_rural rdf:type owl:Class ;
+                                 rdfs:subClassOf cstb:Nomenclature ;
+                                 rdfs:comment "Qualification du sous-sol avec l'approche typologique en zone rurale" ;
+                                 rdfs:label "Nomenclature BRGM typo rural"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureBRGM_typo_urbain
+cstb:NomenclatureBRGM_typo_urbain rdf:type owl:Class ;
+                                  rdfs:subClassOf cstb:Nomenclature ;
+                                  rdfs:comment "Qualification du sous-sol avec l'approche typologique en zone urbaine" ;
+                                  rdfs:label "Nomenclature BRGM typo urbain"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureGEN_HAB
+cstb:NomenclatureGEN_HAB rdf:type owl:Class ;
+                         rdfs:subClassOf cstb:Nomenclature ;
+                         rdfs:comment "Nomenclature habitats dans les grands ensembles naturels du pays de Rennes" ;
+                         rdfs:label "Nomenclature GEN_HAB"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureGEN_LOC
+cstb:NomenclatureGEN_LOC rdf:type owl:Class ;
+                         rdfs:subClassOf cstb:Nomenclature ;
+                         rdfs:comment "Nomenclature biodiversité dans les grands ensembles naturels du pays de Rennes" ;
+                         rdfs:label "Nomenclature GEN_LOC"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureInfiltrationBRGM
+cstb:NomenclatureInfiltrationBRGM rdf:type owl:Class ;
+                                  rdfs:subClassOf cstb:Nomenclature ;
+                                  rdfs:label "Nomenclature Infiltration BRGM"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureMNIE
+cstb:NomenclatureMNIE rdf:type owl:Class ;
+                      rdfs:subClassOf cstb:Nomenclature ;
+                      rdfs:comment "Nomenclature des milieux naturels d’intérêt écologique" ;
+                      rdfs:label "Nomenclature MNIE"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureMOS
+cstb:NomenclatureMOS rdf:type owl:Class ;
+                     rdfs:subClassOf cstb:Nomenclature ;
+                     rdfs:comment "Nomenclature du mode d'Occupation des sols" ;
+                     rdfs:label "Nomenclature MOS"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureOCSGE
+cstb:NomenclatureOCSGE rdf:type owl:Class ;
+                       rdfs:subClassOf cstb:Nomenclature ;
+                       rdfs:comment "Nomenclature de l'occupation des sols à grande échelle" ;
+                       rdfs:label "Nomenclature OCSGE"@fr .
+
+
+###  https://www.cstb.fr#NomenclaturePartArtificialisation
+cstb:NomenclaturePartArtificialisation rdf:type owl:Class ;
+                                       rdfs:subClassOf cstb:Nomenclature ;
+                                       rdfs:label "Nomenclature Part Artificialisation"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureVegetation
+cstb:NomenclatureVegetation rdf:type owl:Class ;
+                            rdfs:subClassOf cstb:Nomenclature ;
+                            rdfs:label "Nomenclature Végétation"@fr .
+
+
+###  https://www.cstb.fr#NomenclatureZAN
+cstb:NomenclatureZAN rdf:type owl:Class ;
+                     rdfs:subClassOf cstb:Nomenclature ;
+                     <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                     <http://purl.org/dc/elements/1.1/date> "2023-10-13T13:52:46Z"^^xsd:dateTime ;
+                     rdfs:label "Nomenclature ZAN" ,
+                                "Nomenclature haut niveau (des parcelles)." .
+
+
+###  https://www.cstb.fr#NomenclatureZonesHumides
+cstb:NomenclatureZonesHumides rdf:type owl:Class ;
+                              rdfs:subClassOf cstb:Nomenclature ;
+                              rdfs:label "Nomenclature Zones Humides"@fr .
+
+
+###  https://www.cstb.fr#OperationAmenagement
+cstb:OperationAmenagement rdf:type owl:Class ;
+                          rdfs:subClassOf cstb:EntiteGeographique ;
+                          rdfs:label "Opération Aménagement"@fr .
+
+
+###  https://www.cstb.fr#Parcelle
+cstb:Parcelle rdf:type owl:Class ;
+              rdfs:subClassOf cstb:EntiteGeographique ;
+              rdfs:comment "Zone géographique issu du cadastre" ;
+              rdfs:label "Parcelle"@fr .
+
+
+###  https://www.cstb.fr#Pole
+cstb:Pole rdf:type owl:Class ;
+          rdfs:subClassOf cstb:EntiteGeographique ;
+          rdfs:label "Pôle"@fr .
+
+
+###  https://www.cstb.fr#PotentielDensification
+cstb:PotentielDensification rdf:type owl:Class ;
+                            rdfs:subClassOf cstb:Score ;
+                            rdfs:comment "Potentiel de densification d'une zone"@fr ;
+                            rdfs:label "Potentiel Densification"@fr .
+
+
+###  https://www.cstb.fr#PotentielRenaturation
+cstb:PotentielRenaturation rdf:type owl:Class ;
+                           rdfs:subClassOf cstb:Score ;
+                           rdfs:comment "Potentiel de renaturation d'une zone"@fr ;
+                           rdfs:label "Potentiel Renaturation"@fr .
+
+
+###  https://www.cstb.fr#Scenario
+cstb:Scenario rdf:type owl:Class ;
+              rdfs:comment "Description des usages futurs de parcelles encadrés par le  PLU" ;
+              rdfs:label "Scénario"@fr .
+
+
+###  https://www.cstb.fr#Score
+cstb:Score rdf:type owl:Class ;
+           rdfs:comment "Note synthétique (sur 20) affectée à une zone géographique par couche ou globalement (Score ZAN)" ;
+           rdfs:label "Score"@fr .
+
+
+###  https://www.cstb.fr#ScoreAgriculture
+cstb:ScoreAgriculture rdf:type owl:Class ;
+                      rdfs:subClassOf cstb:Score ;
+                      rdfs:label "Score Agriculture"@fr .
+
+
+###  https://www.cstb.fr#ScoreAgricultureBio
+cstb:ScoreAgricultureBio rdf:type owl:Class ;
+                         rdfs:subClassOf cstb:Score ;
+                         rdfs:label "Score Agriculture Bio"@fr .
+
+
+###  https://www.cstb.fr#ScoreBRGM_multi
+cstb:ScoreBRGM_multi rdf:type owl:Class ;
+                     rdfs:subClassOf cstb:Score ;
+                     rdfs:comment "Score de qualité du sous-sol (approche multicritère)" ;
+                     rdfs:label "Score BRGM multi"@fr .
+
+
+###  https://www.cstb.fr#ScoreBRGM_typo
+cstb:ScoreBRGM_typo rdf:type owl:Class ;
+                    rdfs:subClassOf cstb:Score ;
+                    rdfs:comment "Score de qualité du sous-sol (approche typologique)" ;
+                    rdfs:label "Score BRGM typo"@fr .
+
+
+###  https://www.cstb.fr#ScoreGENHAB
+cstb:ScoreGENHAB rdf:type owl:Class ;
+                 rdfs:subClassOf cstb:Score ;
+                 rdfs:label "Score GEN HAB"@fr .
+
+
+###  https://www.cstb.fr#ScoreGENLOC
+cstb:ScoreGENLOC rdf:type owl:Class ;
+                 rdfs:subClassOf cstb:Score ;
+                 rdfs:label "Score GEN LOC"@fr .
+
+
+###  https://www.cstb.fr#ScoreInfiltrationBRGM
+cstb:ScoreInfiltrationBRGM rdf:type owl:Class ;
+                           rdfs:subClassOf cstb:Score ;
+                           rdfs:label "Score Infiltration BRGM"@fr .
+
+
+###  https://www.cstb.fr#ScoreMNIE
+cstb:ScoreMNIE rdf:type owl:Class ;
+               rdfs:subClassOf cstb:Score ;
+               rdfs:label "Score MNIE"@fr .
+
+
+###  https://www.cstb.fr#ScoreMOS
+cstb:ScoreMOS rdf:type owl:Class ;
+              rdfs:subClassOf cstb:Score ;
+              rdfs:label "Score MOS"@fr .
+
+
+###  https://www.cstb.fr#ScoreOCSGE
+cstb:ScoreOCSGE rdf:type owl:Class ;
+                rdfs:subClassOf cstb:Score ;
+                rdfs:label "Score OCSGE"@fr .
+
+
+###  https://www.cstb.fr#ScorePartArtificialisation
+cstb:ScorePartArtificialisation rdf:type owl:Class ;
+                                rdfs:subClassOf cstb:Score ;
+                                rdfs:label "Score Part Artificialisation"@fr .
+
+
+###  https://www.cstb.fr#ScoreVegetation
+cstb:ScoreVegetation rdf:type owl:Class ;
+                     rdfs:subClassOf cstb:Score ;
+                     rdfs:label "Score Végétation"@fr .
+
+
+###  https://www.cstb.fr#ScoreZAN
+cstb:ScoreZAN rdf:type owl:Class ;
+              rdfs:subClassOf cstb:Score ;
+              rdfs:comment "Score ZAN d'une zone"@fr ;
+              rdfs:label "Score ZAN"@fr .
+
+
+###  https://www.cstb.fr#ScoreZoneshumides
+cstb:ScoreZoneshumides rdf:type owl:Class ;
+                       rdfs:subClassOf cstb:Score ;
+                       rdfs:label "Score Zones humides"@fr .
+
+
+###  https://www.cstb.fr#Zone2AU_M2
+cstb:Zone2AU_M2 rdf:type owl:Class ;
+                rdfs:subClassOf cstb:ZoneUrbaine ;
+                <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:18:45Z"^^xsd:dateTime ;
+                rdfs:comment "Zone cible pour l'aménagement" ;
+                rdfs:label "Zone 2Au M2" .
+
+
+###  https://www.cstb.fr#ZonePLUI
+cstb:ZonePLUI rdf:type owl:Class ;
+              rdfs:subClassOf cstb:ZoneUrbaine ;
+              rdfs:comment "Zone géographique issu du plan d'urbanisme" ;
+              rdfs:label "Zone PLUI"@fr .
+
+
+###  https://www.cstb.fr#ZoneUrbaine
+cstb:ZoneUrbaine rdf:type owl:Class ;
+                 rdfs:subClassOf cstb:EntiteGeographique ;
+                 <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                 <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:18:06Z"^^xsd:dateTime ;
+                 rdfs:label "Zone Urbaine" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://id.insee.fr/geo/epci/243500139
+<http://id.insee.fr/geo/epci/243500139> rdf:type owl:NamedIndividual ,
+                                                 cstb:EPCI ;
+                                        rdfs:label "Rennes Métropole" .
+
+
+###  https://data.rennesmetropole.fr/api/v2/catalog/datasets/mos_2006_2017_rennes_metropole
+<https://data.rennesmetropole.fr/api/v2/catalog/datasets/mos_2006_2017_rennes_metropole> rdf:type owl:NamedIndividual ,
+                                                                                                  <http://www.w3.org/ns/dcat#Dataset> ;
+                                                                                         <http://purl.org/dc/terms/contributor> _:genid13 ;
+                                                                                         <http://purl.org/dc/terms/creator> _:genid13 ;
+                                                                                         <http://purl.org/dc/terms/date> "2021-04-23T07:43:09Z"^^xsd:dateTime ;
+                                                                                         <http://purl.org/dc/terms/description> """Quelle est la part de terres agricoles qui a disparu depuis dix ans ? 
+Comment évaluer le renouvellement urbain ? Pour répondre à ces 
+questions, l’ADEUPa a développé un système d’observation et d’analyse de
+ l’occupation des sols : Le Mode d'occupation du sol (MOS). Il constitue
+ un référentiel d'observation foncière au service des politiques 
+d'aménagement. Il s'agit d'une couche indiquant l'occupation du sol 
+pour les années 2006 et 2017. La surface minimale de gestion est la 
+parcelle cadastrale. La nomenclature utilisée pour la classification des
+ occupations compte 47 classes (40 présentes sur Rennes Métropole) que 
+l'on peut regrouper en 10 grandes catégories d'occupation.Parmi les attributs la décrivant :adcode_06 = codification d'occupation en 2006adlib_06 = description de la codification d'occupation en 2006admos_06 = catégorie d'occupation du sol en 2006artif_06 = type d'occupation (artificiel / naturel)adcode_17 = codification d'occupation en 2017adlib_17 = description de la codification d'occupation en 2017admos_17 = catégorie d'occupation du sol en 2017Informations techniques détailléesCliquer ici pour télécharger (OGC GeoPackage - 186 Mo)"""@fr ;
+                                                                                         <http://purl.org/dc/terms/identifier> "mos_2006_2017_rennes_metropole@rennes-metropole" ;
+                                                                                         <http://purl.org/dc/terms/issued> "2021-04-23T07:43:09Z"^^xsd:dateTime ;
+                                                                                         <http://purl.org/dc/terms/language> <http://id.loc.gov/vocabulary/iso639-1/fr> ;
+                                                                                         <http://purl.org/dc/terms/license> <http://opendatacommons.org/licenses/odbl/> ;
+                                                                                         <http://purl.org/dc/terms/modified> "2021-04-23T07:43:09Z"^^xsd:dateTime ;
+                                                                                         <http://purl.org/dc/terms/publisher> _:genid13 ;
+                                                                                         <http://purl.org/dc/terms/relation> <http://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/a588c10f-158c-4732-b89c-f2f21ef90a87> ;
+                                                                                         <http://purl.org/dc/terms/rights> <http://opendatacommons.org/licenses/odbl/> ;
+                                                                                         <http://purl.org/dc/terms/subject> <https://data.rennesmetropole.fr/explore/?refine.theme=Environnement> ;
+                                                                                         <http://purl.org/dc/terms/title> "Mode d'Occupation du Sol (MOS) de Rennes Métropole 2006-2017"@fr ;
+                                                                                         <http://www.w3.org/ns/dcat#distribution> <https://data.rennesmetropole.fr/api/v2/catalog/datasets/mos_2006_2017_rennes_metropole-API> ,
+                                                                                                                                  <https://data.rennesmetropole.fr/api/v2/catalog/datasets/mos_2006_2017_rennes_metropole-csv> ,
+                                                                                                                                  <https://data.rennesmetropole.fr/api/v2/catalog/datasets/mos_2006_2017_rennes_metropole-json> ;
+                                                                                         <http://www.w3.org/ns/dcat#keyword> "classification de l'usage des sols"@fr ;
+                                                                                         <http://www.w3.org/ns/dcat#landingPage> <https://data.rennesmetropole.fr/explore/dataset/mos_2006_2017_rennes_metropole/> ;
+                                                                                         <http://www.w3.org/ns/dcat#theme> <https://data.rennesmetropole.fr/explore/?refine.theme=Environnement> .
+
+
+###  https://data.rennesmetropole.fr/api/v2/catalog/datasets/rlpi_eipe
+<https://data.rennesmetropole.fr/api/v2/catalog/datasets/rlpi_eipe> rdf:type owl:NamedIndividual ,
+                                                                             <http://www.w3.org/ns/dcat#Dataset> ;
+                                                                    <http://purl.org/dc/terms/contributor> _:genid14 ;
+                                                                    <http://purl.org/dc/terms/creator> _:genid14 ;
+                                                                    <http://purl.org/dc/terms/date> "2022-06-30T00:00:00Z"^^xsd:dateTime ;
+                                                                    <http://purl.org/dc/terms/description> """Cette couche représente les Espaces d'intérêt paysager ou écologique du Règlement Local de Publicité intercommunal (RLPi).
+
+Dans les secteurs d’intérêt paysager spécifique, le RLPi comporte des dispositions locales qui se substituent aux dispositions applicables dans les zones dans lesquelles se situent ces secteurs d’intérêt paysager. Ils correspondent aux zones naturelles, aux espaces boisés classés et aux espaces d’intérêt paysager et écologique délimités en agglomération par le Plan Local d’Urbanisme intercommunal (PLUi). Ces lieux sont cartographiés à titre d’information en annexe du RLPi.
+
+Ces secteurs sont définis et précisés dans le règlement littéral et les pièces graphiques du RLPi dont les informations suivantes sont extraites. Le présent règlement s’applique à l’ensemble du territoire métropolitain, y compris les espaces hors agglomération, s’agissant des restrictions locales applicables aux enseignes."""@fr ;
+                                                                    <http://purl.org/dc/terms/identifier> "rlpi_eipe@rennes-metropole" ;
+                                                                    <http://purl.org/dc/terms/issued> "2022-06-30T00:00:00Z"^^xsd:dateTime ;
+                                                                    <http://purl.org/dc/terms/language> <http://id.loc.gov/vocabulary/iso639-1/fr> ;
+                                                                    <http://purl.org/dc/terms/license> <http://opendatacommons.org/licenses/odbl/> ;
+                                                                    <http://purl.org/dc/terms/modified> "2022-06-30T00:00:00Z"^^xsd:dateTime ;
+                                                                    <http://purl.org/dc/terms/publisher> _:genid14 ;
+                                                                    <http://purl.org/dc/terms/relation> <https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/csw?elementsetname=full&id=55b0294d-a1d7-44bf-aa4f-2ce2e1187ac1&namespace=xmlns%28gmd%3Dhttp%3A%2F%2Fwww.isotc211.org%2F2005%2Fgmd%29&outputschema=http%3A%2F%2Fwww.isotc211.org%2F2005%2Fgmd&request=GetRecordById&resulttype=results&service=CSW&version=2.0.2> ;
+                                                                    <http://purl.org/dc/terms/rights> <http://opendatacommons.org/licenses/odbl/> ;
+                                                                    <http://purl.org/dc/terms/title> "RLPi de Rennes Métropole - Espaces d'intérêt paysager ou écologique"@fr ;
+                                                                    <http://www.w3.org/ns/dcat#distribution> <https://data.rennesmetropole.fr/api/v2/catalog/datasets/rlpi_eipe-API> ,
+                                                                                                             <https://data.rennesmetropole.fr/api/v2/catalog/datasets/rlpi_eipe-csv> ,
+                                                                                                             <https://data.rennesmetropole.fr/api/v2/catalog/datasets/rlpi_eipe-geojson> ,
+                                                                                                             <https://data.rennesmetropole.fr/api/v2/catalog/datasets/rlpi_eipe-json> ,
+                                                                                                             <https://data.rennesmetropole.fr/api/v2/catalog/datasets/rlpi_eipe-shp> ;
+                                                                    <http://www.w3.org/ns/dcat#keyword> "document d'urbanisme"@fr ;
+                                                                    <http://www.w3.org/ns/dcat#landingPage> <https://data.rennesmetropole.fr/explore/dataset/rlpi_eipe/> .
+
+
+###  https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2011
+<https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2011> rdf:type owl:NamedIndividual ,
+                                                                                        <http://www.w3.org/ns/dcat#Dataset> ;
+                                                                               <http://purl.org/dc/terms/contributor> _:genid14 ;
+                                                                               <http://purl.org/dc/terms/creator> _:genid14 ;
+                                                                               <http://purl.org/dc/terms/date> "2021-04-23T07:43:09Z"^^xsd:dateTime ;
+                                                                               <http://purl.org/dc/terms/description> """Cette couche représente la situation de l'emprise de la végétation en 
+2011 sur le territoire de Rennes Métropole. Elle distingue la strate 
+herbacée de la strate arborée (supérieure à 1 mètre). Les unités 
+minimales sont de 5 m² pour la trame arborée et 1 m² pour la trame 
+herbacée. Les polygones de la strate arborée et de la strate herbacée ne
+ se superposent pas. La société qui a réalisé la prestation de numérisation est la société Kermap.Informations techniques détailléesCliquer ici pour télécharger (OGC GeoPackage - 730 Mo)"""@fr ;
+                                                                               <http://purl.org/dc/terms/identifier> "vegetation_fine_2011@rennes-metropole" ;
+                                                                               <http://purl.org/dc/terms/issued> "2021-04-23T07:43:09Z"^^xsd:dateTime ;
+                                                                               <http://purl.org/dc/terms/language> <http://id.loc.gov/vocabulary/iso639-1/fr> ;
+                                                                               <http://purl.org/dc/terms/license> <http://opendatacommons.org/licenses/odbl/> ;
+                                                                               <http://purl.org/dc/terms/modified> "2021-04-23T07:43:09Z"^^xsd:dateTime ;
+                                                                               <http://purl.org/dc/terms/publisher> _:genid14 ;
+                                                                               <http://purl.org/dc/terms/relation> <http://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/5efc3b30-ef16-4c15-9874-0a020dbc2ae9> ;
+                                                                               <http://purl.org/dc/terms/rights> <http://opendatacommons.org/licenses/odbl/> ;
+                                                                               <http://purl.org/dc/terms/subject> <https://data.rennesmetropole.fr/explore/?refine.theme=Environnement> ;
+                                                                               <http://purl.org/dc/terms/title> "Végétation fine 2011 sur Rennes Métropole"@fr ;
+                                                                               <http://www.w3.org/ns/dcat#distribution> <https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2011-API> ,
+                                                                                                                        <https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2011-csv> ,
+                                                                                                                        <https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2011-json> ;
+                                                                               <http://www.w3.org/ns/dcat#keyword> "classification de l'usage des sols"@fr ;
+                                                                               <http://www.w3.org/ns/dcat#landingPage> <https://data.rennesmetropole.fr/explore/dataset/vegetation_fine_2011/> ;
+                                                                               <http://www.w3.org/ns/dcat#theme> <https://data.rennesmetropole.fr/explore/?refine.theme=Environnement> .
+
+
+###  https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2014
+<https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2014> rdf:type owl:NamedIndividual ,
+                                                                                        <http://www.w3.org/ns/dcat#Dataset> ;
+                                                                               <http://purl.org/dc/terms/contributor> _:genid14 ;
+                                                                               <http://purl.org/dc/terms/creator> _:genid14 ;
+                                                                               <http://purl.org/dc/terms/date> "2020-07-29T15:49:08Z"^^xsd:dateTime ;
+                                                                               <http://purl.org/dc/terms/description> """Cette couche représente la situation de l'emprise de la végétation en 
+2014 sur le territoire de Rennes Métropole. Elle distingue la strate 
+herbacée de la strate arborée (supérieure à 1 mètre). Les unités 
+minimales sont de 5 m² pour la trame arborée et 1 m² pour la trame 
+herbacée. Les polygones de la strate arborée et de la strate herbacée ne
+ se superposent pas. La société qui a réalisé la prestation de numérisation est la société Kermap.Informations techniques détailléesCliquer ici pour télécharger (OGC GeoPackage - 592 Mo)"""@fr ;
+                                                                               <http://purl.org/dc/terms/identifier> "vegetation_fine_2014@rennes-metropole" ;
+                                                                               <http://purl.org/dc/terms/issued> "2020-07-29T15:49:08Z"^^xsd:dateTime ;
+                                                                               <http://purl.org/dc/terms/language> <http://id.loc.gov/vocabulary/iso639-1/fr> ;
+                                                                               <http://purl.org/dc/terms/license> <http://opendatacommons.org/licenses/odbl/> ;
+                                                                               <http://purl.org/dc/terms/modified> "2020-07-29T15:49:08Z"^^xsd:dateTime ;
+                                                                               <http://purl.org/dc/terms/publisher> _:genid14 ;
+                                                                               <http://purl.org/dc/terms/relation> <http://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/98afb10e-1833-428f-82f6-57f9bed4606e> ;
+                                                                               <http://purl.org/dc/terms/rights> <http://opendatacommons.org/licenses/odbl/> ;
+                                                                               <http://purl.org/dc/terms/subject> <https://data.rennesmetropole.fr/explore/?refine.theme=Environnement> ;
+                                                                               <http://purl.org/dc/terms/title> "Végétation fine 2014 sur Rennes Métropole"@fr ;
+                                                                               <http://www.w3.org/ns/dcat#distribution> <https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2014-API> ,
+                                                                                                                        <https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2014-csv> ,
+                                                                                                                        <https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2014-json> ;
+                                                                               <http://www.w3.org/ns/dcat#keyword> "classification de l'usage des sols"@fr ;
+                                                                               <http://www.w3.org/ns/dcat#landingPage> <https://data.rennesmetropole.fr/explore/dataset/vegetation_fine_2014/> ;
+                                                                               <http://www.w3.org/ns/dcat#theme> <https://data.rennesmetropole.fr/explore/?refine.theme=Environnement> .
+
+
+###  https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2017
+<https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2017> rdf:type owl:NamedIndividual ,
+                                                                                        <http://www.w3.org/ns/dcat#Dataset> ;
+                                                                               <http://purl.org/dc/terms/contributor> _:genid14 ;
+                                                                               <http://purl.org/dc/terms/creator> _:genid14 ;
+                                                                               <http://purl.org/dc/terms/date> "2019-10-06T22:00:00Z"^^xsd:dateTime ;
+                                                                               <http://purl.org/dc/terms/description> """Cette couche représente la situation de l'emprise de la végétation en 
+2017 sur le territoire de Rennes Métropole. Elle distingue la strate 
+herbacée de la strate arborée (supérieure à 1 mètre). Les unités 
+minimales sont de 5 m² pour la trame arborée et 1m² pour la trame 
+herbacée. Les polygones de la strate arborée et de la strate herbacée ne
+ se superposent pas. Une hauteur moyenne a été calculée pour la strate 
+arborée.La société qui a réalisé la prestation de numérisation est la société Kermap.Informations techniques détailléesCliquer ici pour télécharger (OGC GeoPackage - 730 Mo)"""@fr ;
+                                                                               <http://purl.org/dc/terms/identifier> "vegetation_fine_2017@rennes-metropole" ;
+                                                                               <http://purl.org/dc/terms/issued> "2019-10-06T22:00:00Z"^^xsd:dateTime ;
+                                                                               <http://purl.org/dc/terms/language> <http://id.loc.gov/vocabulary/iso639-1/fr> ;
+                                                                               <http://purl.org/dc/terms/license> <http://opendatacommons.org/licenses/odbl/> ;
+                                                                               <http://purl.org/dc/terms/modified> "2019-10-06T22:00:00Z"^^xsd:dateTime ;
+                                                                               <http://purl.org/dc/terms/publisher> _:genid14 ;
+                                                                               <http://purl.org/dc/terms/relation> <https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/8aff292f-3ce6-438b-83b0-3771909c27e2> ;
+                                                                               <http://purl.org/dc/terms/rights> <http://opendatacommons.org/licenses/odbl/> ;
+                                                                               <http://purl.org/dc/terms/subject> <https://data.rennesmetropole.fr/explore/?refine.theme=Environnement> ;
+                                                                               <http://purl.org/dc/terms/title> "Végétation fine 2017 sur Rennes Métropole"@fr ;
+                                                                               <http://www.w3.org/ns/dcat#distribution> <https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2017-API> ,
+                                                                                                                        <https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2017-csv> ,
+                                                                                                                        <https://data.rennesmetropole.fr/api/v2/catalog/datasets/vegetation_fine_2017-json> ;
+                                                                               <http://www.w3.org/ns/dcat#keyword> "classification de l'usage des sols"@fr ;
+                                                                               <http://www.w3.org/ns/dcat#landingPage> <https://data.rennesmetropole.fr/explore/dataset/vegetation_fine_2017/> ;
+                                                                               <http://www.w3.org/ns/dcat#theme> <https://data.rennesmetropole.fr/explore/?refine.theme=Environnement> .
+
+
+###  https://metropole.rennes.fr/data/zone#A
+rm-z:A rdf:type owl:NamedIndividual ,
+                cstb:ZonePLUI ;
+       rdfs:label "Zone Agricole" .
+
+
+###  https://metropole.rennes.fr/data/zone#AUc
+rm-z:AUc rdf:type owl:NamedIndividual ,
+                  cstb:ZonePLUI ;
+         rdfs:label "Zone a Urbaniser 1" .
+
+
+###  https://metropole.rennes.fr/data/zone#AUs
+rm-z:AUs rdf:type owl:NamedIndividual ,
+                  cstb:ZonePLUI ;
+         rdfs:label "Zone a Urbaniser 2" .
+
+
+###  https://metropole.rennes.fr/data/zone#N
+rm-z:N rdf:type owl:NamedIndividual ,
+                cstb:ZonePLUI ;
+       rdfs:label "Zone Naturelle" .
+
+
+###  https://metropole.rennes.fr/data/zone#U
+rm-z:U rdf:type owl:NamedIndividual ,
+                cstb:ZonePLUI ;
+       rdfs:label "Zone Urbaine" .
+
+
+###  https://metropole.rennes.fr/data/zone#scenario1
+rm-z:scenario1 rdf:type owl:NamedIndividual ,
+                        cstb:Scenario ;
+               cstb:aPourZoneCible rm-z:AUc ,
+                                   rm-z:AUs ;
+               <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+               <http://purl.org/dc/elements/1.1/date> "2023-11-28T08:31:56Z"^^xsd:dateTime ;
+               rdfs:label "S1 : Artificialisation des zones 1Au et 2Au" .
+
+
+###  https://metropole.rennes.fr/data/zone#scenario2
+rm-z:scenario2 rdf:type owl:NamedIndividual ,
+                        cstb:Scenario ;
+               cstb:aPourZoneCible <https://metropole.rennes.fr/data/zone#2AU_M2> ;
+               <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+               <http://purl.org/dc/elements/1.1/date> "2023-11-28T08:32:03Z"^^xsd:dateTime ;
+               rdfs:label "S2 : Artificialisation de la zone M2" .
+
+
+###  https://metropole.rennes.fr/data/zone#scenario3
+rm-z:scenario3 rdf:type owl:NamedIndividual ,
+                        cstb:Scenario ;
+               cstb:aPourZoneCible rm-z:AUc ,
+                                   rm-z:AUs ;
+               cstb:superficieCible "400.0"^^xsd:double ;
+               <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+               <http://purl.org/dc/elements/1.1/date> "2023-11-28T08:32:09Z"^^xsd:dateTime ;
+               rdfs:label "S3 : Artificialisation de 400ha en zone Au" .
+
+
+###  https://metropole.rennes.fr/data/zone#2AU_M2
+<https://metropole.rennes.fr/data/zone#2AU_M2> rdf:type owl:NamedIndividual ,
+                                                        cstb:ZonePLUI ;
+                                               cstb:estLocaliseDans rm-z:AUs ;
+                                               rdfs:label "2AU pour M2" .
+
+
+###  https://metropole.rennes.fr/datasets#Agriculture
+rm-d:Agriculture rdf:type owl:NamedIndividual ,
+                          <http://www.w3.org/ns/dcat#Dataset> ;
+                 <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                 <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:46:15Z"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#AgricultureBio
+rm-d:AgricultureBio rdf:type owl:NamedIndividual ,
+                             <http://www.w3.org/ns/dcat#Dataset> ;
+                    <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                    <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:47:27Z"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#BRGM_multi_rural
+rm-d:BRGM_multi_rural rdf:type owl:NamedIndividual ,
+                               <http://www.w3.org/ns/dcat#Dataset> ;
+                      <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                      <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:45:42Z"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#BRGM_multi_urbain
+rm-d:BRGM_multi_urbain rdf:type owl:NamedIndividual ,
+                                <http://www.w3.org/ns/dcat#Dataset> ;
+                       <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                       <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:45:32Z"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#BRGM_typo_rural
+rm-d:BRGM_typo_rural rdf:type owl:NamedIndividual ,
+                              <http://www.w3.org/ns/dcat#Dataset> ;
+                     <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                     <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:45:24Z"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#BRGM_typo_urbain
+rm-d:BRGM_typo_urbain rdf:type owl:NamedIndividual ,
+                               <http://www.w3.org/ns/dcat#Dataset> ;
+                      <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                      <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:45:16Z"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#Cadastre
+rm-d:Cadastre rdf:type owl:NamedIndividual ,
+                       <http://www.w3.org/ns/dcat#Dataset> ;
+              <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+              <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:46:49Z"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#EPCI
+rm-d:EPCI rdf:type owl:NamedIndividual ,
+                   <http://www.w3.org/ns/dcat#Dataset> ;
+          <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+          <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:46:56Z"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#GEN_HAB
+rm-d:GEN_HAB rdf:type owl:NamedIndividual ,
+                      <http://www.w3.org/ns/dcat#Dataset> ;
+             <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+             <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:47:02Z"^^xsd:dateTime ;
+             <http://purl.org/dc/terms/source> <https://www.audiar.org/> ;
+             rdfs:label "Grands Ensemble Naturels (Habitat)" .
+
+
+###  https://metropole.rennes.fr/datasets#GEN_LOC
+rm-d:GEN_LOC rdf:type owl:NamedIndividual ,
+                      <http://www.w3.org/ns/dcat#Dataset> ;
+             <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+             <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:47:11Z"^^xsd:dateTime ;
+             <http://purl.org/dc/terms/source> <https://www.audiar.org/> ;
+             rdfs:label "Grands Ensembles Naturels (Périmètre)" .
+
+
+###  https://metropole.rennes.fr/datasets#InfiltrationBRGM
+rm-d:InfiltrationBRGM rdf:type owl:NamedIndividual ,
+                               <http://www.w3.org/ns/dcat#Dataset> ;
+                      <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                      <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:46:35Z"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#PLU
+rm-d:PLU rdf:type owl:NamedIndividual ,
+                  <http://www.w3.org/ns/dcat#Dataset> ;
+         <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+         <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:41:28Z"^^xsd:dateTime ;
+         rdfs:label "Plan local d'urbanisation" .
+
+
+###  https://metropole.rennes.fr/datasets#PartArtificialisation
+rm-d:PartArtificialisation rdf:type owl:NamedIndividual ,
+                                    <http://www.w3.org/ns/dcat#Dataset> ;
+                           <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                           <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:46:41Z"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#ZonesHumides
+rm-d:ZonesHumides rdf:type owl:NamedIndividual ,
+                           <http://www.w3.org/ns/dcat#Dataset> ;
+                  <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                  <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:46:28Z"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#mnie-2015
+rm-d:mnie-2015 rdf:type owl:NamedIndividual ,
+                        <http://www.w3.org/ns/dcat#Dataset> ;
+               <http://www.w3.org/ns/dcat#startDate> "2015-01-01T00:00:00"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#ocsge-2017
+rm-d:ocsge-2017 rdf:type owl:NamedIndividual ,
+                         <http://www.w3.org/ns/dcat#Dataset> ;
+                <http://www.w3.org/ns/dcat#startDate> "2017-01-01T00:00:00"^^xsd:dateTime .
+
+
+###  https://metropole.rennes.fr/datasets#2AUpourM2
+<https://metropole.rennes.fr/datasets#2AUpourM2> rdf:type owl:NamedIndividual ,
+                                                          <http://www.w3.org/ns/dcat#Dataset> ;
+                                                 <http://purl.org/dc/elements/1.1/creator> "bus"^^xsd:string ;
+                                                 <http://purl.org/dc/elements/1.1/date> "2024-01-05T09:40:51Z"^^xsd:dateTime ;
+                                                 rdfs:label "Zone M2" .
+
+
+###  https://www.cstb.fr#ACTIVITE_ET_COMMERCE
+cstb:ACTIVITE_ET_COMMERCE rdf:type owl:NamedIndividual .
+
+
+###  https://www.cstb.fr#AGRICOLE
+cstb:AGRICOLE rdf:type owl:NamedIndividual .
+
+
+###  https://www.cstb.fr#CARRIERE
+cstb:CARRIERE rdf:type owl:NamedIndividual .
+
+
+###  https://www.cstb.fr#DEFENSE
+cstb:DEFENSE rdf:type owl:NamedIndividual .
+
+
+###  https://www.cstb.fr#EQUIPEMENT
+cstb:EQUIPEMENT rdf:type owl:NamedIndividual .
+
+
+###  https://www.cstb.fr#HABITAT
+cstb:HABITAT rdf:type owl:NamedIndividual .
+
+
+###  https://www.cstb.fr#INFRASTRUCTURE
+cstb:INFRASTRUCTURE rdf:type owl:NamedIndividual .
+
+
+###  https://www.cstb.fr#NATUREL_ET_FORESTIER
+cstb:NATUREL_ET_FORESTIER rdf:type owl:NamedIndividual .
+
+
+###  https://www.cstb.fr#SURFACE_EN_EAU
+cstb:SURFACE_EN_EAU rdf:type owl:NamedIndividual .
+
+
+###  https://www.cstb.fr#URBAIN_MIXTE_ET_BATI_DIVERS
+cstb:URBAIN_MIXTE_ET_BATI_DIVERS rdf:type owl:NamedIndividual .
+
+
+###  https://www.cstb.fr#artificiel
+cstb:artificiel rdf:type owl:NamedIndividual .
+
+
+###  https://www.cstb.fr#naturel
+cstb:naturel rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+cstb:deriveDe rdfs:comment "dérive de" ,
+                           "Indique la sources des données calculées" ;
+              rdfs:label "(indicateur) dérive de" .
+
+
+cstb:identifiant rdfs:comment "Nom" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
